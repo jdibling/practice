@@ -4,8 +4,8 @@ LFLAGS=-Wall
 
 all : practice
 
-practice :	main.o quicksort.o mergesort.o binadd.o
-	$(CC) $(LFLAGS) main.o quicksort.o mergesort.o binadd.o -o practice
+practice :	main.o quicksort.o mergesort.o binadd.o trie.o
+	$(CC) $(LFLAGS) main.o quicksort.o mergesort.o binadd.o trie.o -o practice
 
 main.o : main.cpp quicksort.h quicksort.h mergesort.h binadd.o
 	$(CC) $(CFLAGS) main.cpp 
@@ -14,6 +14,8 @@ main.o : main.cpp quicksort.h quicksort.h mergesort.h binadd.o
 quicksort.o : quicksort.cpp quicksort.h 
 	$(CC) $(CFLAGS) quicksort.cpp
 
+trie.o : trie.cpp trie.h 
+	$(CC) $(CFLAGS) trie.cpp
 
 mergesort.o :mergesort.cpp mergesort.h 
 	$(CC) $(CFLAGS) mergesort.cpp

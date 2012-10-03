@@ -6,6 +6,7 @@ using namespace std;
 #include "quicksort.h"
 #include "mergesort.h"
 #include "binadd.h"
+#include "trie.h"
 
 int main()
 {
@@ -30,5 +31,8 @@ int main()
 			}
 		}
 	}
+
+	trie();
+
 }
 
