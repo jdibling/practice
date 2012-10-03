@@ -7,7 +7,7 @@ using namespace std;
 #include "mergesort.h"
 #include "binadd.h"
 #include "trie.h"
-
+#include "bst.h"
 int main()
 {
 	quicksort_1(100001);	
@@ -32,7 +32,19 @@ int main()
 		}
 	}
 
-	trie();
+//	trie();
+
+	bst::BST* bst = new bst::BST;
+	bst->insert("hello");
+	bst->insert("hell");
+	bst->insert("hella");
+	bst->insert("bye");
+	bst->insert("zebra");
+
+	cout << "In-Order Traversal: " << endl;
+	bst->print();
+
+	cout << "Max: " << bst->get_max()->val_ << "\tMin:" << bst->get_min()->val_ << endl;
 
 }
 

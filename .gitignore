@@ -2,5 +2,11 @@
 practice
 *.swp
 *.swo
+Debug/*
+ipch/*
+*.sdf
+*.suo
+*.opensdf
+
 
 
