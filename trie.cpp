@@ -90,6 +90,9 @@ vector<string> Node::find(const string& target)
 
 void Node::add(const string& word)
 {
+	if( word[0] == 'h' && word[1] == 'e' && word[2] == 'l' && word[3] == 'l' )
+		bool bk = true;
+
 	Node* cur = this, *root = this;
 	for( string::const_iterator it_c = word.begin(); it_c != word.end(); ++it_c )
 	{
@@ -241,8 +244,17 @@ void trie()
 	ifstream if_words("master.dict");
 	cout << "Loading Words..." << endl;
 
-	for( string word; if_words >> word; if_words >> word )
+	string word;
+	while( getline(if_words,word) )
 	{
+		if( word.find("helizitic") != string::npos )
+		{
+			cout << word << endl;
+		}
+		if( word.find("hell") != string::npos )
+		{
+			cout << word << endl;
+		}
 		root.add(word);
 	}
 
