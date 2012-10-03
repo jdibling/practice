@@ -74,11 +74,8 @@ vector<string> Node::find(const string& target)
 		string match;
 		for( vector<const Node*>::const_iterator follow = trail.begin(); trail.end() != follow; ++follow )
 			match.push_back((*follow)->key_);
-		std::reverse(match.begin(), match.end()); 
-		if( match[0] == '\0' )
-			match.erase(match.begin());
-
-		ss << match;
+		std::reverse(match.begin(), match.end());
+		ss << match; 
 		matches.push_back(ss.str());
 	}
 	else
@@ -125,23 +122,123 @@ void Node::add(const string& word)
 
 string words [] =
 {
-	"amy",
-	"ann",
-	"rob",
-	"robert",
-	"roger"
+"hell",
+"hellandite",
+"hellanodic",
+"hell-begotten",
+"hellbender",
+"hell-bent",
+"hellbent",
+"hell-bind",
+"hell-black",
+"hellbore",
+"hell-born",
+"hellborn",
+"hell-bound",
+"hellbox",
+"hellboxes",
+"hell-bred",
+"hellbred",
+"hell-brewed",
+"hellbroth",
+"hell-cat",
+"hellcat",
+"hellcats",
+"hell-dark",
+"hell-deep",
+"hell-devil",
+"hell-diver",
+"helldiver",
+"helldog",
+"hell-doomed",
+"hell-driver",
+"helleboraceous",
+"helleboraster",
+"hellebore",
+"helleborein",
+"hellebores",
+"helleboric",
+"helleborin",
+"helleborine",
+"helleborism",
+"helled",
+"hellene",
+"hellenes",
+"hell-engendered",
+"hellenian",
+"hellenic",
+"hellenism",
+"hellenist",
+"hellenistic",
+"hellenists",
+"hellenization",
+"hellenize",
+"heller",
+"helleri",
+"helleries",
+"hellers",
+"hellery",
+"hellespont",
+"hell-fire",
+"hellfire",
+"hell-fired",
+"hellfires",
+"hell-for-leather",
+"hell-gate",
+"hellgrammite",
+"hellgrammites",
+"hellhag",
+"hell-hard",
+"hell-hatched",
+"hell-haunted",
+"hellhole",
+"hellholes",
+"hell-hound",
+"hellhound",
+"hellicat",
+"hellicate",
+"hellier",
+"hellim",
+"helling",
+"hellion",
+"hellions",
+"hellish",
+"hellishly",
+"hellishness",
+"hellkite",
+"hellkites",
+"hell-like",
+"hellman",
+"hellness",
+"hello",
+"helloed",
+"helloes",
+"helloing",
+"hellos",
+"hell-raiser",
+"hell-raker",
+"hell-red",
+"hellroot",
+"hells",
+"hellship",
+"helluo",
+"helluva",
+"hell-vine",
+"hellvine",
+"hellward",
+"hellweed",
+"helly",
 };
+
 size_t words_n = sizeof(words)/sizeof(words[0]);
 
 void trie()
 {
 	Node root;
 
-#ifdef _WIN32
-	ifstream if_words("c:\\dev\\words2.txt");
-#else
-	ifstream if_words("/usr/share/dict/words");
-#endif
+//	ifstream if_words("/usr/share/dict/words");
+//	ifstream if_words("hell.dict");
+	ifstream if_words("master.dict");
 	cout << "Loading Words..." << endl;
 
 	for( string word; if_words >> word; if_words >> word )
@@ -149,10 +246,13 @@ void trie()
 		root.add(word);
 	}
 
+//	for( size_t i = 0; i < sizeof(words)/sizeof(words[0]); ++i )
+//		root.add(words[i]);
+
 	cout << "Loaded " << root.word_count_ << " words." << endl;
 
 	cout << "Enter a word to search for" << endl;
-	for( string s; cin >> s; cin >> s )
+	for( string s; cin >> s; cin >> s, cout << "Enter another word" << endl )
 	{
 		vector<string> matches = root.find(s);
 		cout << matches.size() << " matches: \n\t";
