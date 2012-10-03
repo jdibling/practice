@@ -75,7 +75,11 @@ vector<string> Node::find(const string& target)
 		for( vector<const Node*>::const_iterator follow = trail.begin(); trail.end() != follow; ++follow )
 			match.push_back((*follow)->key_);
 		std::reverse(match.begin(), match.end()); 
-		matches.push_back(match);
+		if( match[0] == '\0' )
+			match.erase(match.begin());
+
+		ss << match;
+		matches.push_back(ss.str());
 	}
 	else
 	{
@@ -133,7 +137,11 @@ void trie()
 {
 	Node root;
 
+#ifdef _WIN32
+	ifstream if_words("c:\\dev\\words2.txt");
+#else
 	ifstream if_words("/usr/share/dict/words");
+#endif
 	cout << "Loading Words..." << endl;
 
 	for( string word; if_words >> word; if_words >> word )

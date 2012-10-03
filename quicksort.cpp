@@ -9,6 +9,7 @@
 #include <utility>
 #include <ctime>
 using namespace std;
+#include <stdint.h>
 
 template<class V> bool is_sorted(V ary[])
 {
